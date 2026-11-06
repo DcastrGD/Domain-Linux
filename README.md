@@ -110,7 +110,7 @@ AutoInstallDomain.sh
 ### 1. Clonar o copiar el script
 
 ```bash
-git clone <url-del-repositorio> /opt/Domain-Linux
+git clone https://github.com/DcastrGD/Domain-Linux.git /opt/Domain-Linux
 cd /opt/Domain-Linux
 ```
 
