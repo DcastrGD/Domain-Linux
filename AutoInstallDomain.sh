@@ -368,13 +368,16 @@ function samba {
     echo "[+] Provisionando el dominio ${DOMAIN_UPPER}..."
 
     if ! samba-tool domain provision \
-        --realm="$DOMAIN_UPPER" \
-        --domain="${NAME_DOMAIN^^}" \
-        --server-role=dc \
-        --dns-backend=SAMBA_INTERNAL \
-        --use-rfc2307 \
-        --option="dns forwarder = ${DNS_FORWARDER}" \
-        --adminpass="$DOMAIN_PASS"; then
+    --realm="$DOMAIN_UPPER" \
+    --domain="${NAME_DOMAIN^^}" \
+    --server-role=dc \
+    --dns-backend=SAMBA_INTERNAL \
+    --use-rfc2307 \
+    --host-ip="$IP" \
+    --option="interfaces = lo ${INTERFAZ}" \
+    --option="bind interfaces only = yes" \
+    --option="dns forwarder = ${DNS_FORWARDER}" \
+    --adminpass="$DOMAIN_PASS"; then
 
         echo "[-] Ha fallado el provisionamiento de Samba."
         return 1
